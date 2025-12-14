@@ -1,15 +1,22 @@
 <script setup lang="ts">
 
+import NavBar from "@/components/NavBar.vue";
+import AboutMe from "@/components/AboutMe.vue";
 </script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="container">
+    <NavBar></NavBar>
+    <AboutMe>
+
+    </AboutMe>
+  </div>
+
 </template>
 
 <style scoped>
+.container{
+  padding: 0 5%;
+}
 
 </style>
