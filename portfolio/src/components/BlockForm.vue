@@ -28,15 +28,18 @@ const props = defineProps<{
 }
 
 .small{
-  max-width: clamp(200px, 12vw, 400px);;
+  min-width: 10%;
+  width: clamp(200px, 12vw, 400px);
+  max-width: 100vw;
 }
 
 .half{
-  max-width: 43%;
+  min-width: 50%;
+  max-width: 100vw;
 }
 
 .big{
-  width: 800px;
-  max-width: 60vw;
+  min-width: 60%;
+  max-width: 100vw;
 }
 </style>

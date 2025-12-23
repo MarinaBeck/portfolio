@@ -45,6 +45,9 @@
     --neutrals-800: #333232;
     --neutrals-900: #1A1919;
 
+    /* Breakpoints*/
+    --breakpoint-desktop: 1400px;
+
 }
 
 
