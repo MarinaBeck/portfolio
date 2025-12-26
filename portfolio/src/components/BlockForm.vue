@@ -22,15 +22,18 @@ const props = defineProps<{
   padding: 2% 2% 2% 3%;
 }
 
+
 .filled{
   background-color: var(--primary-550);
   border-radius: 50px 50px 50px 300px;
 }
 
 .small{
-  min-width: 10%;
-  width: clamp(200px, 12vw, 400px);
+  width: clamp(250px, 12vw, 400px);
   max-width: 100vw;
+  height: clamp(250px, 12vw, 400px);
+  padding: 10%;
+  border-radius: 120px 50px 50px 50px;
 }
 
 .half{

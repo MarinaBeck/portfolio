@@ -18,7 +18,7 @@ import BlockForm from "@/components/BlockForm.vue";
         <BlockForm :type="EBlockTypes.Filled" :size="'half'" class="w-full lg:w-auto image-container">
           <img alt="portrait" src="../assets/portrait.png" />
         </BlockForm>
-        <h1 class="text-right dev desktop:mt-9">&lt;<span class="highlightC">WebDeveloper</span>&gt;</h1>
+        <h1 class="text-right dev desktop:mt-9">&lt;/<span class="highlightC">WebDeveloper</span>&gt;</h1>
       </div>
     </div>
   </div>
@@ -57,6 +57,7 @@ img{
   height: auto;
   object-fit: cover;
   border-bottom-left-radius: 75px;
+  display: block;
 }
 
 @media (min-width: 1024px) {
