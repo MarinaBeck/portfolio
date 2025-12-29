@@ -28,6 +28,16 @@ const props = defineProps<{
   border-radius: 50px 50px 50px 300px;
 }
 
+.glass{
+  background: linear-gradient(
+      to bottom right,
+      rgba(242, 246, 255, 0.08) 0%,
+      rgba(242, 246, 255, 0.02) 100%
+  );
+  border-radius: 50px 100px 50px 50px ;
+  padding: 5%;
+}
+
 .small{
   width: clamp(250px, 12vw, 400px);
   max-width: 100vw;

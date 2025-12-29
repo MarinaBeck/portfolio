@@ -4,6 +4,8 @@ import NavBar from "@/components/NavBar.vue";
 import AboutMe from "@/components/AboutMe.vue";
 import AboutMeInfo from "@/components/AboutMeInfo.vue";
 import Skills from "@/components/Skills.vue";
+import Projects from "@/components/Projects.vue";
+import Journey from "@/components/Journey.vue";
 </script>
 
 <template>
@@ -12,6 +14,8 @@ import Skills from "@/components/Skills.vue";
     <AboutMe></AboutMe>
     <AboutMeInfo></AboutMeInfo>
     <Skills></Skills>
+    <Projects></Projects>
+    <Journey></Journey>
   </div>
 
 </template>

@@ -14,6 +14,7 @@ import html from "../assets/html5.webp";
 import javascript from "../assets/javascript.webp";
 import typescript from "../assets/typescript.webp";
 import vuejs from "../assets/vuejs.webp";
+import tailwindcss from "../assets/tailwind.webp";
 
 // slider
 
@@ -117,6 +118,7 @@ onMounted(() => {
 const skillImages = [
   html,
   css3,
+  tailwindcss,
   javascript,
   typescript,
   vuejs,
