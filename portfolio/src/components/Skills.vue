@@ -1,8 +1,21 @@
 <script setup lang="ts">
 
+//imports
+
 import {ref, onMounted, computed} from "vue";
 import BlockForm from "@/components/BlockForm.vue";
 import {EBlockTypes} from "@/types.ts";
+import adobeIllustrator from "../assets/adobeIllustrator.webp";
+import adobeIndesign from "../assets/adobeIndesign.webp";
+import adobePhotoshop from "../assets/adobePhotoshop.webp";
+import css3 from "../assets/css3.webp";
+import docker from "../assets/docker.webp";
+import html from "../assets/html5.webp";
+import javascript from "../assets/javascript.webp";
+import typescript from "../assets/typescript.webp";
+import vuejs from "../assets/vuejs.webp";
+
+// slider
 
 const slider = ref<HTMLDivElement | null>(null);
 
@@ -94,7 +107,7 @@ const autoScroll = () => {
   animationId = requestAnimationFrame(autoScroll);
 };
 
-onMounted(() =>{
+onMounted(() => {
   autoScroll();
 })
 
@@ -102,13 +115,15 @@ onMounted(() =>{
 // image sources for the blockform skills
 
 const skillImages = [
-  '/images/skill1.png',
-  '/images/skill2.png',
-  '/images/skill3.png',
-  '/images/skill4.png',
-  '/images/skill5.png',
-  '/images/skill6.png',
-  '/images/skill7.png',
+  html,
+  css3,
+  javascript,
+  typescript,
+  vuejs,
+  docker,
+  adobeIllustrator,
+  adobeIndesign,
+  adobePhotoshop,
 ];
 </script>
 
@@ -137,14 +152,16 @@ const skillImages = [
 
       <div v-for="(image, index) in skillImages"
            :key="index"
-           class="max-md:min-w-64">
+           class="max-md:min-w-64 flex items-center justify-center">
         <BlockForm
             :type="EBlockTypes.Filled"
             :size="'small'"
             :class="index % 2 === 1 ? 'outlined-wrapper' : ''"
             class="max-md:min-w-64"
-            :image="image"
-        />
+        >
+          <img v-if="image" :src="image" alt="skill icon"/>
+        </BlockForm>
+
       </div>
 
     </div>
@@ -154,17 +171,21 @@ const skillImages = [
 
 <style scoped>
 
-.outlined-wrapper{
+img {
+  scale: 0.9;
+}
+
+.outlined-wrapper {
   outline: 5px solid var(--primary-400);
   outline-offset: -3px;
 }
 
-h2{
+h2 {
   margin: 7% 0 2% 0;
 }
 
 
-.whiteLine{
+.whiteLine {
   background-color: var(--primary-10);
   height: 40px;
   width: 100%;

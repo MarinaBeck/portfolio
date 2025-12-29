@@ -27,12 +27,18 @@ import BlockForm from "@/components/BlockForm.vue";
 </template>
 
 <style scoped>
+
+h2{
+  margin-bottom: 5%;
+}
+
+
 #about-me{
   padding: 5% 0;
 }
 
 #eyeText{
-  font-size: clamp(0.5rem, 5vw, 7rem);
+  font-size: clamp(0.5rem, 6vw, 8rem);
 }
 
 .block-content{
