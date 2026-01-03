@@ -36,10 +36,10 @@ const activeFilter = ref<workOrInt>("all");
     <div class="flex w-full items-center">
 
       <!-- left symbol -->
-      <p class="text-[clamp(50px,13vw,15vw)] flex-shrink-0">&lt;</p>
+      <p class="bigSymbols flex-shrink-0">&lt;</p>
 
       <!-- textbox -->
-      <div class="mx-auto max-w-lg text-left">
+      <div class="flex-1 max-w-xl mx-auto text-left">
         <h2>2 months</h2>
         <p>Web Developer and UX / UI Designer in marketing</p>
         <p>AEP H2 GmbH <br> Linz - Austria</p>
@@ -47,7 +47,7 @@ const activeFilter = ref<workOrInt>("all");
       </div>
 
       <!-- right symbol -->
-      <p class="text-[clamp(50px,13vw,15vw)] flex-shrink-0">/&gt;</p>
+      <p class="bigSymbols flex-shrink-0">/&gt;</p>
     </div>
 
   </div>
@@ -56,14 +56,15 @@ const activeFilter = ref<workOrInt>("all");
 
   <!-- INTERNSHIP -->
   <div v-if="activeFilter === 'all' || activeFilter === 'internship'">
-    <p class="greenText">internship</p>
-    <div id="internship" class="flex w-full items-center" >
+    <p class="greenText mb-4">internship</p>
+
+    <div class="flex w-full items-center" >
 
       <!-- Left Symbol -->
       <p class="bigSymbols flex-shrink-0">&lt;</p>
 
       <!-- Content -->
-      <div class="flex-1 max-w-xl mx-auto px-6 text-left">
+      <div class="flex-1 max-w-xl mx-auto text-left">
         <h2>1 month</h2>
         <p>Frontend Web Developer</p>
         <p>fab4minds GmbH <br>
@@ -75,13 +76,13 @@ const activeFilter = ref<workOrInt>("all");
       <p class="bigSymbols flex-shrink-0">/&gt;</p>
     </div>
 
-    <div id="internship" class="flex w-full items-center" >
+    <div class="flex w-full items-center" >
 
       <!-- Left Symbol -->
       <p class="bigSymbols flex-shrink-0">&lt;</p>
 
       <!-- Content -->
-      <div class="flex-1 max-w-xl mx-auto px-6 text-left">
+      <div class="flex-1 max-w-xl mx-auto text-left">
         <h2>1 month</h2>
         <p>IT support and network management</p>
         <p>NBG Holding GmbH <br>
@@ -100,6 +101,10 @@ const activeFilter = ref<workOrInt>("all");
 
 h1{
   margin: 7% 0;
+}
+
+.descriptions{
+  font-size: 13px;
 }
 
 .bigSymbols{
@@ -144,11 +149,11 @@ h1{
   color: white;
 }
 
-/* Options (limited styling, browser-dependent) */
 .filter-select option {
   background-color: var(--primary-550);
   color: white;
 }
+
 
 
 </style>

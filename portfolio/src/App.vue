@@ -20,6 +20,7 @@ import Contact from "@/components/Contact.vue";
     <Journey></Journey>
     <Experience></Experience>
     <Contact></Contact>
+    <Footer></Footer>
   </div>
 
 </template>
