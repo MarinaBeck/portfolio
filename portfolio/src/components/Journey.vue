@@ -4,7 +4,7 @@ import { EBlockTypes } from "@/types.ts";
 </script>
 
 <template>
-  <h1>// Journey</h1>
+  <h1 id="journey">// Journey</h1>
 
   <!-- Desktop Timeline -->
   <div class="relative w-full mt-12 grid grid-cols-[1fr_40px_1fr] gap-y-24 auto-rows-min hidden md:grid">

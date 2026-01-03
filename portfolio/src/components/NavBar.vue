@@ -18,13 +18,13 @@ const toggleMenu = () => {
 
     <ul class="hidden desktop:flex space-x-24">
       <!--Nav Links-->
-      <li>About Me</li>
-      <li>Projects</li>
-      <li>Journey</li>
-      <li>Experience</li>
+      <li><a href="#aboutme">About </a></li>
+      <li><a href="#projects"> Projects</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#experience">Experience</a></li>
     </ul>
 
-    <p class="hidden desktop:block">Contact</p>
+    <p class="hidden desktop:block"><a href="#contact">Contact </a></p>
 
     <!-- Burger Menu Button (unter 1400px sichtbar) -->
     <button @click="toggleMenu" class="desktop:hidden burger-btn">
@@ -36,10 +36,10 @@ const toggleMenu = () => {
     <!-- Mobile Menu -->
     <div v-if="isMenuOpen" class="mobile-menu desktop:hidden">
       <ul class="flex flex-col space-y-4">
-        <li @click="toggleMenu">About Me</li>
-        <li @click="toggleMenu">Projects</li>
-        <li @click="toggleMenu">Journey</li>
-        <li @click="toggleMenu">Experience</li>
+        <li @click="toggleMenu"><a href="#aboutme">About </a></li>
+        <li @click="toggleMenu"><a href="#projects"> Projects</a></li>
+        <li @click="toggleMenu"><a href="#journey">Journey</a></li>
+        <li @click="toggleMenu"><a href="#experience">Experience</a></li>
         <li @click="toggleMenu">Contact</li>
       </ul>
     </div>
@@ -50,6 +50,7 @@ const toggleMenu = () => {
 </template>
 
 <style scoped>
+
 #logo{
   height: clamp(35px, 2vw, 60px);
   width: auto;

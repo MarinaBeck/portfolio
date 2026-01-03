@@ -5,7 +5,7 @@ import {EBlockTypes} from "@/types.ts";
 </script>
 
 <template>
-  <h1>// Projects</h1>
+  <h1 id="projects">// Projects</h1>
 
   <div class="flex  gap-10">
     <BlockForm :type="EBlockTypes.Outline" size="half" class="max-md:w-full max-lg:w-auto blockf">

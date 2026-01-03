@@ -27,9 +27,13 @@ import Footer from "@/components/Footer.vue";
 
 </template>
 
-<style scoped>
+<style>
 .container{
   padding: 0 5%;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 </style>

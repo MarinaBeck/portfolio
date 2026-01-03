@@ -16,7 +16,8 @@ import swimming from "../assets/swimming-svgrepo-com.svg";
 </script>
 
 <template>
-  <h1>// About Me</h1>
+
+  <h1 id="aboutme">// About Me</h1>
 
   <div class="flex alignright gap-5">
     <h2>
