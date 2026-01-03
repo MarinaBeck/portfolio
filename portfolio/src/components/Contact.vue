@@ -1,11 +1,19 @@
 <script setup lang="ts">
+const openMail = () => {
+  const hex = '6d6172696e612e6265636b3840676d61696c2e636f6d';
+  const email = hex.match(/.{1,2}/g)!.map(byte =>
+      String.fromCharCode(parseInt(byte, 16))
+  ).join('');
+
+  window.open(`mailto:${email}`, '_blank');
+};
 
 </script>
 
 <template>
   <div class="flex flex-col gap-15">
     <h1 class="text-center">contact me</h1>
-    <button class="mx-auto px-8 py-3 md:px-12 md:py-4 lg:px-16 lg:py-5 w-fit">
+    <button @click="openMail" class="mx-auto px-8 py-3 md:px-12 md:py-4 lg:px-16 lg:py-5 w-fit">
       write me
     </button>
   </div>

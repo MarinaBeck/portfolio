@@ -8,6 +8,7 @@ import Projects from "@/components/Projects.vue";
 import Journey from "@/components/Journey.vue";
 import Experience from "@/components/Experience.vue";
 import Contact from "@/components/Contact.vue";
+import Footer from "@/components/Footer.vue";
 </script>
 
 <template>
@@ -20,8 +21,9 @@ import Contact from "@/components/Contact.vue";
     <Journey></Journey>
     <Experience></Experience>
     <Contact></Contact>
-    <Footer></Footer>
+
   </div>
+  <Footer></Footer>
 
 </template>
 
