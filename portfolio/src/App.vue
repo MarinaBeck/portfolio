@@ -6,6 +6,8 @@ import AboutMeInfo from "@/components/AboutMeInfo.vue";
 import Skills from "@/components/Skills.vue";
 import Projects from "@/components/Projects.vue";
 import Journey from "@/components/Journey.vue";
+import Experience from "@/components/Experience.vue";
+import Contact from "@/components/Contact.vue";
 </script>
 
 <template>
@@ -16,6 +18,8 @@ import Journey from "@/components/Journey.vue";
     <Skills></Skills>
     <Projects></Projects>
     <Journey></Journey>
+    <Experience></Experience>
+    <Contact></Contact>
   </div>
 
 </template>

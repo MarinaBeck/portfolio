@@ -50,18 +50,18 @@ import { EBlockTypes } from "@/types.ts";
 
     <div class="flex flex-col gap-2">
       <BlockForm :type="EBlockTypes.Glass" size="big">
-        <h2>Another Education/Experience <br> Example Institute</h2>
-        <p>Some Program/Role</p>
+        <h2>Secondary technical school <br> Krems - Austria  </h2>
+        <p>information technology</p>
       </BlockForm>
-      <p class="text-center font-semibold ">2022 - 2024</p>
+      <p class="text-center font-semibold ">2019 - 2024</p>
     </div>
 
     <div class="flex flex-col gap-2">
       <BlockForm :type="EBlockTypes.Glass" size="big">
-        <h2>Some Job / Role <br> Company Name</h2>
-        <p>Description</p>
+        <h2>Middleschool Stift Zwettl</h2>
+        <p>Music</p>
       </BlockForm>
-      <p class="text-center font-semibold ">2020 - 2022</p>
+      <p class="text-center font-semibold ">2015 - 2019</p>
     </div>
   </div>
 </template>
