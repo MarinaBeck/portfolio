@@ -3,6 +3,7 @@
 import BlockForm from "@/components/BlockForm.vue";
 import {EBlockTypes} from "@/types.ts";
 import NextUp from "../assets/NextUp.png";
+import NewWork from "../assets/newWork.png";
 
 const openLink = (url: string) => {
   window.open(url, '_blank');
@@ -23,7 +24,11 @@ const openLink = (url: string) => {
       </div>
 
     </BlockForm>
-    <BlockForm :type="EBlockTypes.Outline" size="half" class="max-md:w-full max-lg:w-auto image-hover">
+    <BlockForm :type="EBlockTypes.Outline" size="half" class="max-md:w-full max-lg:w-auto image-hover flex items-center"
+               @click="openLink('https://new-work-projekt.netlify.app/')"
+
+    >
+      <img :src="NewWork" alt="NewWorkProject" class="rounded-3xl" />
       <div class="overlay">
         <h2 class="project-title">New Work</h2>
         <p class="project-description">Agile Project Management course</p>
