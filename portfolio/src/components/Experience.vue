@@ -36,18 +36,18 @@ const activeFilter = ref<workOrInt>("all");
     <div class="flex w-full items-center">
 
       <!-- left symbol -->
-      <p class="bigSymbols flex-shrink-0">&lt;</p>
+      <p class="bigSymbols flex-shrink-0 max-md:hidden">&lt;</p>
 
       <!-- textbox -->
       <div class="flex-1 max-w-xl mx-auto text-left">
         <h2>2 months</h2>
-        <p>Web Developer and UX / UI Designer in marketing</p>
+        <p>UX / UI Designer in marketing</p>
         <p>AEP H2 GmbH <br> Linz - Austria</p>
         <p class="descriptions">2025</p>
       </div>
 
       <!-- right symbol -->
-      <p class="bigSymbols flex-shrink-0">/&gt;</p>
+      <p class="bigSymbols flex-shrink-0 max-md:hidden">/&gt;</p>
     </div>
 
   </div>
@@ -61,7 +61,7 @@ const activeFilter = ref<workOrInt>("all");
     <div class="flex w-full items-center" >
 
       <!-- Left Symbol -->
-      <p class="bigSymbols flex-shrink-0">&lt;</p>
+      <p class="bigSymbols flex-shrink-0 max-md:hidden">&lt;</p>
 
       <!-- Content -->
       <div class="flex-1 max-w-xl mx-auto text-left">
@@ -73,13 +73,15 @@ const activeFilter = ref<workOrInt>("all");
       </div>
 
       <!-- Right Symbol -->
-      <p class="bigSymbols flex-shrink-0">/&gt;</p>
+      <p class="bigSymbols flex-shrink-0 max-md:hidden">/&gt;</p>
     </div>
+
+    <hr class="min-md:hidden mt-5 mb-5">
 
     <div class="flex w-full items-center" >
 
       <!-- Left Symbol -->
-      <p class="bigSymbols flex-shrink-0">&lt;</p>
+      <p class="bigSymbols flex-shrink-0 max-md:hidden">&lt;</p>
 
       <!-- Content -->
       <div class="flex-1 max-w-xl mx-auto text-left">
@@ -91,7 +93,7 @@ const activeFilter = ref<workOrInt>("all");
       </div>
 
       <!-- Right Symbol -->
-      <p class="bigSymbols flex-shrink-0">/&gt;</p>
+      <p class="bigSymbols flex-shrink-0 max-md:hidden">/&gt;</p>
     </div>
   </div>
 
