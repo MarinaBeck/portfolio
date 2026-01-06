@@ -12,23 +12,25 @@ import Footer from "@/components/Footer.vue";
 </script>
 
 <template>
-  <div class="container">
-    <NavBar></NavBar>
-    <AboutMe></AboutMe>
-    <AboutMeInfo></AboutMeInfo>
-    <Skills></Skills>
-    <Projects></Projects>
-    <Journey></Journey>
-    <Experience></Experience>
-    <Contact></Contact>
 
-  </div>
+  <NavBar></NavBar>
+  <AboutMe></AboutMe>
+  <AboutMeInfo></AboutMeInfo>
+  <Skills></Skills>
+  <Projects></Projects>
+  <Journey></Journey>
+  <Experience></Experience>
+  <Contact></Contact>
   <Footer></Footer>
 
 </template>
 
 <style>
-.container{
+body{
+  padding: 0 5%;
+}
+
+.container {
   padding: 0 5%;
 }
 

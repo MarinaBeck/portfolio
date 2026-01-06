@@ -14,7 +14,7 @@ const openMail = () => {
   <div class="flex flex-col gap-15">
     <h1 id="contact" class="text-center">contact me</h1>
     <button @click="openMail" class="mx-auto px-8 py-3 md:px-12 md:py-4 lg:px-16 lg:py-5 w-fit">
-      write me
+      write an email
     </button>
   </div>
 
