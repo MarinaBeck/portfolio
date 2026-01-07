@@ -2,6 +2,12 @@
 
 import BlockForm from "@/components/BlockForm.vue";
 import {EBlockTypes} from "@/types.ts";
+import {ref} from "vue";
+import Modal from "@/components/Modal.vue";
+
+const showModel = ref(false);
+
+
 </script>
 
 <template>
@@ -31,9 +37,20 @@ import {EBlockTypes} from "@/types.ts";
         </div>
       </div>
 
-      <div class="mt-8">
+      <div class="mt-8 flex flex-col items-end">
         <img src="/logoS.svg" alt="Logo" id="logo" class="ml-auto" />
         <p class="text-right customText">built with Vue.js using Typescript, HTML and Tailwind CSS</p>
+        <button class="ml-auto relative" @click="showModel = true">Impressum</button>
+        <Modal v-if="showModel" @close="showModel = false">
+          <h1>Impressum</h1>
+          <p>Marina Beck</p>
+          <p>&#x6d;&#x61;&#x72;&#x69;&#x6e;&#x61;&#x2e;&#x62;&#x65;&#x63;&#x6b;&#x38;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</p>
+          <p>Böhmhöf 2</p>
+          <p>3910 Zwettl</p>
+        </Modal>
+
+        <!-- Icons Info -->
+        <p class="info mt-10">Icons from svgrepo.com</p>
       </div>
 
     </div>
@@ -95,6 +112,31 @@ span{
 
 .filledB > p{
   padding: 0 10%;
+}
+
+button:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Border-Animation */
+button::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--highlight-500);
+  transition: width 0.3s ease-in-out;
+}
+
+button:hover::after{
+  width: 100%;
+}
+
+.info{
+  font-size: clamp(5px, 13px, 18px);
 }
 
 </style>

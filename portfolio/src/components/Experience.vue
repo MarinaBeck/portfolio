@@ -67,7 +67,7 @@ const activeFilter = ref<workOrInt>("all");
       <div class="flex-1 max-w-xl mx-auto text-left">
         <h2>1 month</h2>
         <p>Frontend Web Developer</p>
-        <p>fab4minds GmbH <br>
+        <p>fab4minds Informationstechnik GmbH <br>
           Vitis - Austria</p>
         <p class="descriptions">2023</p>
       </div>

@@ -9,7 +9,6 @@ import {Play} from "lucide-vue-next";
 
 // hobbies icons
 import {Code} from "lucide-vue-next";
-import {Circle} from "lucide-vue-next";
 import soccer from "../assets/soccer-svgrepo-com.svg";
 import running from "../assets/run-svgrepo-com.svg";
 import swimming from "../assets/swimming-svgrepo-com.svg";
