@@ -5,18 +5,6 @@
 import {ref, onMounted, computed} from "vue";
 import BlockForm from "@/components/BlockForm.vue";
 import {EBlockTypes} from "@/types.ts";
-import adobeIllustrator from "../assets/adobeIllustrator.webp";
-import adobeIndesign from "../assets/adobeIndesign.webp";
-import adobePhotoshop from "../assets/adobePhotoshop.webp";
-import css3 from "../assets/css3.webp";
-import docker from "../assets/docker.webp";
-import html from "../assets/html5.webp";
-import javascript from "../assets/javascript.webp";
-import typescript from "../assets/typescript.webp";
-import vuejs from "../assets/vuejs.webp";
-import tailwindcss from "../assets/tailwind.webp";
-import figma from "../assets/figma-color.png";
-import react from "../assets/react.svg";
 
 // slider
 
@@ -118,18 +106,18 @@ onMounted(() => {
 // image sources for the blockform skills
 
 const skillImages = [
-  html,
-  css3,
-  figma,
-  tailwindcss,
-  javascript,
-  typescript,
-  vuejs,
-  react,
-  docker,
-  adobeIllustrator,
-  adobeIndesign,
-  adobePhotoshop,
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg",
 ];
 </script>
 

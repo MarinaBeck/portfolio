@@ -41,7 +41,7 @@ const activeFilter = ref<workOrInt>("all");
       <!-- textbox -->
       <div class="flex-1 max-w-xl mx-auto text-left">
         <h2>2 months</h2>
-        <p>UX / UI Designer in marketing</p>
+        <p>Webdesigner in marketing</p>
         <p>AEP H2 GmbH <br> Linz - Austria</p>
         <p class="descriptions">2025</p>
       </div>

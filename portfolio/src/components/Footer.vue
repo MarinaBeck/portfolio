@@ -50,7 +50,8 @@ const showModel = ref(false);
         </Modal>
 
         <!-- Icons Info -->
-        <p class="info mt-10">Icons from svgrepo.com</p>
+        <p class="info mt-5">Icons from <a href="https://svgrepo.com" target="_blank">svgrepo</a></p>
+        <p class="info">Skill-Icons from <a href="https://devicon.dev" target="_blank">Devicon</a></p>
       </div>
 
     </div>
