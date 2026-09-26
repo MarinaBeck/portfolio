@@ -9,6 +9,10 @@
     --text-h1: clamp(2rem, 5vw, 2.5rem);
     --text-h2: clamp(1.5rem, 3vw, 2rem);
 
+    --h1-letter-spacing: -15%;
+    --h2-letter-spacing: -15%;
+    --h3-letter-spacing: -15%;
+
     /* Primary */
 
     --primary-100: #2C4CA3;
@@ -20,6 +24,7 @@
     --primary-550: #0D1730;
     --primary-600: #0A1124;
     --primary-650: #060B17;
+    --primary-700: #03060C;
     --primary-10: #F2F6FF;
 
     /* Secondary */
@@ -54,7 +59,7 @@
 @layer base{
     body, li{
         @apply font-sans;
-        background-color: var(--primary-650);
+        background-color: var(--primary-700);
         font-size: var(--text-body);
         color: var(--neutrals-500);
     }
@@ -63,11 +68,27 @@
         font-family: var(--font-h1);
         font-size: var(--text-h1);
         color: var(--neutrals-500);
+        letter-spacing: var(--h1-letter-spacing);
     }
 
     h2{
         font-family: var(--font-h2);
         font-size: var(--text-h2);
         color: var(--neutrals-500);
+    }
+
+}
+
+@layer components{
+    .muted-text-30{
+        opacity: 0.3;
+    }
+
+    .muted-text-70{
+        opacity: 0.7;
+    }
+
+    .font-heading{
+        font-family: var(--font-h1);
     }
 }

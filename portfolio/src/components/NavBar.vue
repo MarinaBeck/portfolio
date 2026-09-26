@@ -14,7 +14,9 @@ const toggleMenu = () => {
 
   <nav id="nav" class="flex justify-between items-center relative">
 
-    <img src="/logoS.svg" alt="Logo" id="logo" />
+
+    <!-- <img src="/logoS.svg" alt="Logo" id="logo" /> -->
+    <span class="font-heading">marina</span>
 
     <ul class="hidden desktop:flex space-x-24">
       <!--Nav Links-->
@@ -24,7 +26,7 @@ const toggleMenu = () => {
       <li><a href="#experience">Experience</a></li>
     </ul>
 
-    <p class="hidden desktop:block"><a href="#contact">Contact </a></p>
+    <span class="muted-text-30 desktop:block"><a href="">hosted with github </a></span>
 
     <!-- Burger Menu Button (unter 1400px sichtbar) -->
     <button @click="toggleMenu" class="desktop:hidden burger-btn">
@@ -61,7 +63,6 @@ const toggleMenu = () => {
 }
 
 li, p{
-  opacity: 0.8;
   transition: opacity 0.3s ease-in-out;
   position: relative;
   font-size: clamp(0.5rem, 30px, 1rem);
