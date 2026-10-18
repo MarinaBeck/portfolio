@@ -2,12 +2,7 @@
 
 import {ref} from "vue";
 
-const isMenuOpen = ref(false);
 
-
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
 </script>
 
 <template>
@@ -18,7 +13,7 @@ const toggleMenu = () => {
     <!-- <img src="/logoS.svg" alt="Logo" id="logo" /> -->
     <span class="font-heading">marina</span>
 
-    <ul class="hidden desktop:flex space-x-24">
+    <ul class="hidden space-x-24">
       <!--Nav Links-->
       <li><a href="#aboutme">About </a></li>
       <li><a href="#projects"> Projects</a></li>
@@ -26,25 +21,7 @@ const toggleMenu = () => {
       <li><a href="#experience">Experience</a></li>
     </ul>
 
-    <span class="muted-text-30 desktop:block"><a href="">hosted with github </a></span>
-
-    <!-- Burger Menu Button (unter 1400px sichtbar) -->
-    <button @click="toggleMenu" class="desktop:hidden burger-btn">
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
-    </button>
-
-    <!-- Mobile Menu -->
-    <div v-if="isMenuOpen" class="mobile-menu desktop:hidden">
-      <ul class="flex flex-col space-y-4">
-        <li @click="toggleMenu"><a href="#aboutme">About </a></li>
-        <li @click="toggleMenu"><a href="#projects"> Projects</a></li>
-        <li @click="toggleMenu"><a href="#journey">Journey</a></li>
-        <li @click="toggleMenu"><a href="#experience">Experience</a></li>
-        <li @click="toggleMenu">Contact</li>
-      </ul>
-    </div>
+    <span class="muted-text-50 desktop:block reveal"><a href="https://github.com/MarinaBeck">hosted with github </a></span>
 
 
   </nav>
@@ -53,14 +30,11 @@ const toggleMenu = () => {
 
 <style scoped>
 
-#logo{
-  height: clamp(35px, 2vw, 60px);
-  width: auto;
-}
 
 #nav{
   padding: 2% 0;
 }
+
 
 li, p{
   transition: opacity 0.3s ease-in-out;
@@ -81,7 +55,7 @@ li::after, p::after{
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--highlight-500);
+  background-color: var(--color-highlight-500);
   transition: width 0.3s ease-in-out;
 }
 
@@ -95,46 +69,12 @@ p{
   max-width: 200px;
 }
 
-/* Burger Menu Styles */
-.burger-btn {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-}
-
-.burger-line {
-  width: 30px;
-  height: 3px;
-  background-color: var(--primary-10);
-  transition: all 0.3s ease;
-}
-
-.mobile-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: var(--primary-550);
-  border-radius: 20px;
-  padding: 2rem;
-  margin-top: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
 
 .mobile-menu li {
   padding: 0.5rem 0;
   background-color: transparent;
 }
 
-@media (min-width: 1400px) {
-  .burger-btn {
-    display: none;
-  }
-}
 
 
 </style>
