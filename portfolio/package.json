@@ -14,7 +14,10 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@iconify/vue": "^5.0.3",
+    "@vueuse/motion": "^3.0.3",
     "lucide-vue-next": "^0.562.0",
+    "motion-v": "^2.7.0",
     "vue": "^3.5.25"
   },
   "devDependencies": {
