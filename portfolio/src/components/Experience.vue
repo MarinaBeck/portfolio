@@ -1,19 +1,99 @@
+
 <script setup lang="ts">
+import { ref, computed } from "vue";
 
-import {ref} from "vue";
+type WorkOrInt = "all" | "work" | "internship";
 
-type workOrInt =  "all" |"work" | "internship";
+interface Experience {
+  type: Exclude<WorkOrInt, "all">;
+  duration: string;
+  position: string;
+  company: string;
+  location: string;
+  year: number;
+}
 
-const activeFilter = ref<workOrInt>("all");
+const activeFilter = ref<WorkOrInt>("all");
 
+const experiences: Experience[] = [
+  {
+    type: "work",
+    duration: "2 months",
+    position: "Webdesigner in marketing",
+    company: "AEP H2 GmbH",
+    location: "Linz - Austria",
+    year: 2025,
+  },
+  {
+    type: "internship",
+    duration: "1 month",
+    position: "Frontend Web Developer",
+    company: "fab4minds Informationstechnik GmbH",
+    location: "Vitis - Austria",
+    year: 2023,
+  },
+  {
+    type: "internship",
+    duration: "1 month",
+    position: "IT support and Network Management",
+    company: "NBG Holding GmbH",
+    location: "Gmünd - Austria",
+    year: 2022,
+  },
+  {
+    type: "internship",
+    duration: "3 months",
+    position: "Frontend Web Developer",
+    company: "MARKETIERE GmbH",
+    location: "Horn - Austria",
+    year: 2026,
+  },
+];
+
+const filteredExperiences = computed(() => {
+  return activeFilter.value === "all"
+      ? experiences
+      : experiences.filter(
+          (experience) => experience.type === activeFilter.value
+      );
+});
+
+const groupedExperiences = computed(() => {
+  const groups: {
+    type: Exclude<WorkOrInt, "all">;
+    items: Experience[];
+  }[] = [];
+
+  for (const experience of filteredExperiences.value) {
+    let group = groups.find((item) => item.type === experience.type);
+
+    if (!group) {
+      group = { type: experience.type, items: [] };
+      groups.push(group);
+    }
+
+    group.items.push(experience);
+  }
+
+  // Sort each group by year, newest first
+  for (const group of groups) {
+    group.items.sort((a, b) => b.year - a.year);
+  }
+
+  return groups;
+});
 </script>
 
 <template>
-  <h1 id="experience">// Experience</h1>
+  <div class="flex flex-row justify-between pt-20" id="experience">
+    <h1 class="text-body text-highlight-500">experience</h1>
+    <span class="text-body text-highlight-500">{</span>
+  </div>
 
-  <div class="flex justify-between mb-10">
-    <h2>most recent</h2>
-    <div class="filter-wrapper ">
+  <div class="flex justify-between mb-10 mt-10 added-padding">
+    <h2 class="font-h1 text-body self-center-safe">most recent</h2>
+
+    <div class="filter-wrapper">
       <label class="filter-label" for="filter">filter</label>
 
       <select id="filter" v-model="activeFilter" class="filter-select">
@@ -24,97 +104,71 @@ const activeFilter = ref<workOrInt>("all");
     </div>
   </div>
 
+  <!-- Experience groups -->
+  <section
+      v-for="group in groupedExperiences"
+      :key="group.type"
+      class="added-padding mb-8"
+  >
+    <p class="greenText mb-4">{{ group.type }}</p>
 
+    <!-- Individual experience entries -->
+    <article
+        v-for="(experience, index) in group.items"
+        :key="`${experience.company}-${experience.year}`"
+    >
+      <div class="flex w-full items-center">
+        <!-- Left symbol -->
+        <p class="bigSymbols flex-shrink-0 max-md:hidden">&lt;</p>
 
-  <!-- WORK -->
-  <div v-if="activeFilter === 'all' || activeFilter === 'work'" class="w-full">
+        <!-- Content -->
+        <div class="flex-1 max-w-xl mx-auto text-left font-h1">
+          <h2 class="font-h1 font-bold">{{ experience.duration }}</h2>
+          <p class="muted-text-50 reveal">{{ experience.position }}</p>
+          <p class="muted-text-50 reveal">
+            {{ experience.company }}
+          </p>
+          <p class="text-neutral-700">
+            {{ experience.year }}
+            {{ experience.location }}
+          </p>
+        </div>
 
-    <!-- LABEL (eigene Zeile) -->
-    <p class="greenText mb-4">work</p>
-
-    <!-- CONTENT ROW -->
-    <div class="flex w-full items-center">
-
-      <!-- left symbol -->
-      <p class="bigSymbols flex-shrink-0 max-md:hidden">&lt;</p>
-
-      <!-- textbox -->
-      <div class="flex-1 max-w-xl mx-auto text-left">
-        <h2>2 months</h2>
-        <p>Webdesigner in marketing</p>
-        <p>AEP H2 GmbH <br> Linz - Austria</p>
-        <p class="descriptions">2025</p>
+        <!-- Right symbol -->
+        <p class="bigSymbols flex-shrink-0 max-md:hidden">/&gt;</p>
       </div>
 
-      <!-- right symbol -->
-      <p class="bigSymbols flex-shrink-0 max-md:hidden">/&gt;</p>
-    </div>
+      <!-- Separator between entries on mobile -->
+      <hr
+          v-if="index < group.items.length - 1"
+          class="min-md:hidden mt-5 mb-5"
+      />
+    </article>
+  </section>
 
-  </div>
-
-
-
-  <!-- INTERNSHIP -->
-  <div v-if="activeFilter === 'all' || activeFilter === 'internship'">
-    <p class="greenText mb-4">internship</p>
-
-    <div class="flex w-full items-center" >
-
-      <!-- Left Symbol -->
-      <p class="bigSymbols flex-shrink-0 max-md:hidden">&lt;</p>
-
-      <!-- Content -->
-      <div class="flex-1 max-w-xl mx-auto text-left">
-        <h2>1 month</h2>
-        <p>Frontend Web Developer</p>
-        <p>fab4minds Informationstechnik GmbH <br>
-          Vitis - Austria</p>
-        <p class="descriptions">2023</p>
-      </div>
-
-      <!-- Right Symbol -->
-      <p class="bigSymbols flex-shrink-0 max-md:hidden">/&gt;</p>
-    </div>
-
-    <hr class="min-md:hidden mt-5 mb-5">
-
-    <div class="flex w-full items-center" >
-
-      <!-- Left Symbol -->
-      <p class="bigSymbols flex-shrink-0 max-md:hidden">&lt;</p>
-
-      <!-- Content -->
-      <div class="flex-1 max-w-xl mx-auto text-left">
-        <h2>1 month</h2>
-        <p>IT support and network management</p>
-        <p>NBG Holding GmbH <br>
-          Gmünd - Austria </p>
-        <p class="descriptions">2022</p>
-      </div>
-
-      <!-- Right Symbol -->
-      <p class="bigSymbols flex-shrink-0 max-md:hidden">/&gt;</p>
-    </div>
-  </div>
-
+  <span class="text-body text-highlight-500">}</span>
 </template>
 
 <style scoped>
-
-h1{
-  margin: 7% 0;
+.added-padding {
+  padding-left: 10vw;
+  padding-right: 10vw;
 }
 
-.descriptions{
+.descriptions {
   font-size: 13px;
 }
 
-.bigSymbols{
-  font-size: clamp(50px, 13vw, 15vw);
+.bigSymbols {
+  font-size: clamp(50px, 8vw, 10vw);
+  font-family: var(--font-h1);
+  letter-spacing: var(--h1-letter-spacing);
+  font-weight: bold;
+  opacity: 70%;
 }
 
-.greenText{
-  color: var(--highlight-500);
+.greenText {
+  color: var(--color-highlight-500);
 }
 
 .filter-wrapper {
@@ -122,16 +176,15 @@ h1{
   display: inline-flex;
   align-items: center;
   gap: 1rem;
+  border: none;
 }
 
-/* Label */
 .filter-label {
   color: white;
 }
 
-/* SELECT */
 .filter-select {
-  background-color: var(--primary-550);
+  background-color: var(--color-primary-600);
   border-radius: 20px;
   padding: 0.8rem 2.5rem 0.8rem 1.2rem;
   color: white;
@@ -142,7 +195,6 @@ h1{
   font-size: 1rem;
 }
 
-/* Arrow */
 .filter-wrapper::after {
   content: "▾";
   position: absolute;
@@ -152,10 +204,8 @@ h1{
 }
 
 .filter-select option {
-  background-color: var(--primary-550);
+  background-color: var(--color-primary-600);
   color: white;
+  border: none;
 }
-
-
-
 </style>
