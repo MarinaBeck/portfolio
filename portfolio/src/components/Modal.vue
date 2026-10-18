@@ -37,7 +37,7 @@ const emit = defineEmits<{
 
 
 .modal-content {
-  background: var(--primary-650, white);
+  background: var(--color-primary-650, white);
   padding: 2.5rem;
   border-radius: 12px;
   max-width: 500px;
@@ -68,7 +68,7 @@ const emit = defineEmits<{
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--neutrals-500, #333);
+  color: var(--color-neutrals-500, #333);
   line-height: 1;
   padding: 0.25rem 0.5rem;
   transition: transform 0.2s ease;
@@ -76,7 +76,7 @@ const emit = defineEmits<{
 
 .close-btn:hover {
   transform: scale(1.1);
-  color: var(--highlight-500);
+  color: var(--color-highlight-500);
 }
 
 </style>
