@@ -1,204 +1,164 @@
 <script setup lang="ts">
+import { Icon } from "@iconify/vue";
+import { computed, ref } from "vue";
 
-//imports
+interface Skill {
+  name: string;
+  icon: string;
+}
 
-import {ref, onMounted, computed} from "vue";
-import BlockForm from "@/components/BlockForm.vue";
-import {EBlockTypes} from "@/types.ts";
+const fallbackIcon = "carbon:code";
 
-// slider
+const skills: Skill[] = [
+  // Programmiersprachen & Frameworks
+  { name: "C#", icon: "devicon:csharp" },
+  { name: ".NET", icon: "logos:dotnet" },
+  { name: "WPF", icon: fallbackIcon },
+  { name: "Java", icon: "logos:java" },
+  { name: "Spring Boot", icon: "logos:spring-icon" },
+  { name: "Python", icon: "logos:python" },
+  { name: "Node.js", icon: "logos:nodejs-icon" },
+  { name: "Vue.js", icon: "logos:vue" },
+  { name: "React Native", icon: "logos:react" },
+  { name: "TypeScript", icon: "logos:typescript-icon" },
 
-const slider = ref<HTMLDivElement | null>(null);
+  // Webtechnologien
+  { name: "HTML5", icon: "logos:html-5" },
+  { name: "CSS", icon: "logos:css-3" },
+  { name: "SCSS", icon: "logos:sass" },
+  { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
 
-const isDragging = ref(false);
-const startX = ref(0);
-const scrollLeft = ref(0);
+  // APIs
+  { name: "REST-APIs", icon: "carbon:api" },
 
-const onMouseDown = (e: MouseEvent) => {
-  if (!slider.value) return;
+  // Datenbanken
+  { name: "MySQL", icon: "logos:mysql" },
+  { name: "Oracle", icon: "logos:oracle" },
+  { name: "MongoDB", icon: "logos:mongodb-icon" },
+  { name: "Apache TinkerPop Gremlin", icon: fallbackIcon },
 
-  isDragging.value = true;
-  isAutoScrolling.value = false; // pause auto scrolling
-  slider.value.classList.add("dragging");
+  // DevOps & Versionsverwaltung
+  { name: "Docker", icon: "logos:docker-icon" },
+  { name: "Docker Compose", icon: "logos:docker-icon" },
+  { name: "Dockerfile", icon: "logos:docker-icon" },
+  { name: "Git", icon: "logos:git-icon" },
+  { name: "GitHub", icon: "logos:github-icon" },
 
-  startX.value = e.pageX - slider.value.offsetLeft;
-  scrollLeft.value = slider.value.scrollLeft;
-};
-
-
-const onMouseMove = (e: MouseEvent) => {
-  if (!isDragging.value || !slider.value) return;
-
-  e.preventDefault();
-
-  const x = e.pageX - slider.value.offsetLeft;
-  const walk = (x - startX.value) * 1.5; // Drag-Speed
-  slider.value.scrollLeft = scrollLeft.value - walk;
-};
-
-const onMouseUp = () => {
-  if (!slider.value) return;
-
-  isDragging.value = false;
-  slider.value.classList.remove("dragging");
-};
-
-const onTouchStart = (e: TouchEvent) => {
-  if (!slider.value) return;
-
-  const touch = e.touches[0];
-  if (!touch) return;
-
-  startX.value = touch.pageX;
-  scrollLeft.value = slider.value.scrollLeft;
-};
-
-const onTouchMove = (e: TouchEvent) => {
-  if (!slider.value) return;
-
-  const touch = e.touches[0];
-  if (!touch) return;
-
-  const walk = (touch.pageX - startX.value) * 1.5;
-  slider.value.scrollLeft = scrollLeft.value - walk;
-};
-
-
-const onTouchEnd = () => {
-  isDragging.value = false;
-};
-
-
-const isAutoScrolling = ref(true);
-let animationId: number | null = null;
-let scrollAccumulator = 0;
-
-const AUTO_SCROLL_SPEED = 0.4; // px pro Frame
-
-const autoScroll = () => {
-  if (!slider.value) return;
-
-  if (isAutoScrolling.value && !isDragging.value) {
-    scrollAccumulator += AUTO_SCROLL_SPEED;
-
-    // Nur scrollen wenn mindestens 1 Pixel akkumuliert wurde
-    if (scrollAccumulator >= 1) {
-      const scrollAmount = Math.floor(scrollAccumulator);
-      slider.value.scrollLeft += scrollAmount;
-      scrollAccumulator -= scrollAmount;
-
-      // Endlos-Loop: Wenn am Ende, zurück zum Anfang
-      const maxScroll = slider.value.scrollWidth - slider.value.clientWidth;
-      if (slider.value.scrollLeft >= maxScroll) {
-        slider.value.scrollLeft = 0;
-      }
-    }
-  }
-
-  animationId = requestAnimationFrame(autoScroll);
-};
-
-onMounted(() => {
-  autoScroll();
-})
-
-
-// image sources for the blockform skills
-
-const skillImages = [
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg",
+  // Design
+  { name: "Figma", icon: "logos:figma" },
 ];
+
+const skillIcons = ref<Record<string, string>>({});
+
+function getSkillIcon(skill: Skill): string {
+  return skillIcons.value[skill.name] ?? skill.icon;
+}
+
+function handleIconError(skill: Skill) {
+  skillIcons.value[skill.name] = fallbackIcon;
+}
 </script>
 
 <template>
-  <h2 class="text-right">(...MySkills)</h2>
+  <section
+      class="grid w-full min-w-0 grid-cols-1 items-start gap-6
+           md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]
+           md:gap-8 lg:gap-12 xl:gap-20"
+  >
+    <!-- Linke Seite: Code-Editor -->
+    <div class="min-w-0">
+      <p
+          class="font-heading text-base tracking-wide text-neutrals-500"
+      >
+        skillset
+      </p>
 
-  <div class="relative flex items-center ">
-    <div class="whiteLine"></div>
-
-    <!-- Slider -->
-    <div
-        ref="slider"
-        class="slider p-5 px-4 sm:px-8 lg:px-14
-         flex gap-5
-         overflow-x-auto
-         cursor-grab
-         relative z-10"
-        @mousedown="onMouseDown"
-        @mousemove="onMouseMove"
-        @mouseup="onMouseUp"
-        @mouseleave="() => { onMouseUp(); isAutoScrolling = true }"
-        @touchstart="onTouchStart"
-        @touchmove="onTouchMove"
-        @touchend="onTouchEnd"
-    >
-
-      <div v-for="(image, index) in skillImages"
-           :key="index"
-           class="max-md:min-w-64 flex items-center justify-center">
-        <BlockForm
-            :type="EBlockTypes.Filled"
-            :size="'small'"
-            :class="index % 2 === 1 ? 'outlined-wrapper' : ''"
-            class="max-md:min-w-64"
-        >
-          <img v-if="image" :src="image" alt="skill icon"/>
-        </BlockForm>
-
+      <div
+          class="my-5 flex gap-1 overflow-hidden whitespace-nowrap
+               font-h1 text-2xl leading-none text-secondary-900
+               md:my-8 lg:my-10 "
+          aria-hidden="true"
+      >
+        <span v-for="n in 16" :key="n">&gt;</span>
       </div>
 
+      <p
+          class="mb-2 font-mono text-sm text-neutrals-600 muted-text-50"
+      >
+        marina_skills.tsx
+      </p>
+
+      <div class="font-mono text-sm leading-7 sm:text-base">
+        <div class="flex items-baseline gap-3">
+          <span
+              class="w-4 shrink-0 select-none text-right text-neutrals-600"
+          >
+            1
+          </span>
+
+          <span class="text-neutrals-500">const skills = [</span>
+        </div>
+
+        <div
+            v-for="(skill, index) in skills"
+            :key="skill.name"
+            class="flex min-w-0 items-baseline gap-3"
+        >
+          <span
+              class="w-4 shrink-0 select-none text-right text-neutrals-600"
+          >
+            {{ index + 2 }}
+          </span>
+
+          <span class="min-w-0 break-words text-highlight-500">
+            "{{ skill.name }}"<span v-if="index < skills.length - 1">,</span>
+          </span>
+        </div>
+
+        <div class="flex items-baseline gap-3">
+          <span
+              class="w-4 shrink-0 select-none text-right text-neutrals-600"
+          >
+            {{ skills.length + 2 }}
+          </span>
+
+          <span class="text-neutrals-500">];</span>
+        </div>
+      </div>
     </div>
-  </div>
 
+    <!-- Rechte Seite: Technologie-Labels -->
+    <div
+        class="flex min-w-0 flex-wrap content-start items-center gap-2
+             sm:gap-3 md:pt-20 lg:gap-3 lg:pt-24 xl:gap-4"
+    >
+      <div
+          v-for="skill in skills"
+          :key="skill.name"
+          class="inline-flex max-w-full shrink-0 items-center gap-2
+               rounded-full border border-neutrals-800 bg-primary-600
+               py-1.5 pl-1.5 pr-3 text-sm text-neutrals-500
+               transition-all duration-200
+               hover:-translate-y-0.5 hover:border-secondary-500
+               hover:bg-primary-550
+               sm:gap-2.5 sm:py-2 sm:pr-4 sm:text-base"
+      >
+        <span
+            class="grid size-7 shrink-0 place-items-center rounded-lg
+                 bg-primary-400 text-secondary-400 sm:size-[30px]"
+        >
+          <Icon
+              :icon="getSkillIcon(skill)"
+              width="20"
+              height="20"
+              @load-error="handleIconError(skill)"
+          />
+        </span>
+
+        <span class="whitespace-nowrap">
+          {{ skill.name }}
+        </span>
+      </div>
+    </div>
+  </section>
 </template>
-
-<style scoped>
-
-img {
-  scale: 0.9;
-}
-
-.outlined-wrapper {
-  outline: 5px solid var(--primary-400);
-  outline-offset: -3px;
-}
-
-h2 {
-  margin: 7% 0 2% 0;
-}
-
-
-.whiteLine {
-  background-color: var(--primary-10);
-  height: 40px;
-  width: 100%;
-  position: absolute;
-  z-index: 0;
-}
-
-.slider {
-  user-select: none;
-  scrollbar-width: none;
-}
-
-
-.slider::-webkit-scrollbar {
-  display: none;
-}
-
-.dragging {
-  cursor: grabbing;
-}
-
-</style>
