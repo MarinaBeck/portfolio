@@ -1,5 +1,5 @@
 import { ref, onMounted, onUnmounted } from "vue";
-import type FloatingCursor from "@/components/FloatingCursor.vue";
+import type FloatingCursor from "@/components/hover/FloatingCursor.vue";
 
 export function useFloatingCursor() {
     const active = ref<boolean>(false);
@@ -9,9 +9,9 @@ export function useFloatingCursor() {
         cursor.value?.moveCursor(event);
     }
 
-    function onEnter(event: PointerEvent): void {
+    function onEnter(event?: PointerEvent): void {
         active.value = true;
-        onMove(event);
+        if (event) onMove(event);
     }
 
     function onLeave(): void {
